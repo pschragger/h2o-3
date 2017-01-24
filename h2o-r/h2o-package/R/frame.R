@@ -52,9 +52,11 @@ h2o.getId <- function(x) attr( .eval.frame(x), "id")
 #' Get the types-per-column
 #'
 #' @param x An H2OFrame
-#' @return A list of types
+#' @return A H2OFrame that displays the column types per column
 #' @export
-h2o.getTypes <- function(x) attr( .eval.frame(x), "types")
+h2o.getTypes <- function(x){
+  return(as.h2o(attr( .eval.frame(x), "types"),col.names=colnames(x)))
+}
 
 .h2o.gc <- function() {
   gc()
